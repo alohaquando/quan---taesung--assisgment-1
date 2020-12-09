@@ -14,7 +14,8 @@ function New_Game () {
         Game_Set()
     }
     if (game_mode == 4) {
-        basic.showString("Convert")
+        basic.showString("CONVERT")
+        Game_Convert()
     }
 }
 function Validate_AND_OR () {
@@ -51,7 +52,9 @@ input.onButtonPressed(Button.A, function () {
 })
 function Next_game () {
     game.addScore(1)
-    Reset_Arrays()
+    answer = []
+    question = []
+    AND_OR = 0
     New_Game()
 }
 function validate_Flip () {
@@ -131,9 +134,6 @@ input.onButtonPressed(Button.B, function () {
     answer.push(0)
     AND_OR = 2
 })
-input.onGesture(Gesture.Shake, function () {
-    control.reset()
-})
 function Game_Reset () {
     Bit_index_select()
     Guide_And_Or()
@@ -171,11 +171,6 @@ function Game_Convert () {
     decimal = randint(0, 16)
     change_binary(decimal)
     basic.showString("" + (decimal))
-}
-function Reset_Arrays () {
-    answer = []
-    question = []
-    AND_OR = 0
 }
 function Game_Set () {
     Bit_index_select()
